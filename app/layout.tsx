@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import Header from "@/components/header";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "@/components/ui/sonner";
+import { GeistSans } from 'geist/font/sans';
 
 export const metadata: Metadata = {
   title: "routine",
-  description: "Gerencie e tenha o controle de suas tarefas/rotina ao longo do dia e na palma da sua mão.",
+  description: "Gerencie seus hábitos na palma das suas mãos.",
 };
 
 export default function RootLayout({
@@ -18,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={GeistSans.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -26,8 +25,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
+          <Toaster />
           {children}
         </ThemeProvider>
+
       </body>
     </html>
   );
