@@ -12,8 +12,8 @@ export async function newHabit(formData: FormData) {
     return 'O titulo do seu hábito não pode estar em branco.';
   }
   // Validação de dados com mais de 35 caracteres
-  if (habit.length > 35) {
-    return 'Não é possível inserir um hábito com mais de 35 caracteres no titulo.';
+  if (habit.length > 20) {
+    return 'Não é possível inserir um hábito com mais de 20 caracteres no titulo.';
   }
 
   await kv.hset("habits", { [habit as string]: {} });

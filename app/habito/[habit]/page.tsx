@@ -26,7 +26,7 @@ async function Habit({ params: { habit } }: { params: { habit: string } }) {
       </div>
       <div>
         <h1 className="pt-12 text-lg font-bold">
-          <span className="text-lg font-thin">Hábito:&#32;&#32;</span>
+          <span className="text-lg font-normal dark:font-thin">Hábito:&#32;&#32;</span>
           {decodedHabit}
         </h1>
       </div>

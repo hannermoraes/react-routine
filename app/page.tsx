@@ -1,6 +1,7 @@
 import DayState from "@/components/DayState";
 import DeleteButton from "@/components/DeleteButton";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { kv } from "@vercel/kv";
 import Link from "next/link";
 import { BsPlusCircleDotted } from "react-icons/bs";
@@ -30,7 +31,7 @@ export default async function Home() {
     .reverse();
 
   return (
-    <main className="container flex flex-col justify-center gap-6">
+    <main className="container flex flex-col mx-auto w-full gap-6">
       {(habits === null || Object.keys(habits || {}).length === 0) && (
         <h1 className="flex justify-center items-center text-sm sm:text-lg md:text-2xl font-normal ">
           Você não tem &nbsp;<span className="font-extrabold ">hábitos</span>&nbsp; cadastrados.
@@ -38,7 +39,7 @@ export default async function Home() {
       )}
       {habits !== null &&
         Object.entries(habits).map(([habit, habitStreak]) => (
-          <div key={habit} className="flex flex-col gap-1 border-2 rounded-xl capitalize">
+          <div key={habit} className="flex flex-col gap-1 border-2 rounded-xl">
             <div className="flex justify-between items-center">
               <Link href={`habito/${habit}`}>
                 <div className="flex items-center justify-between p-2 w-full">
@@ -56,7 +57,7 @@ export default async function Home() {
                 <section className="grid grid-cols-7 pt-2 mx-1">
                   {sortedWeekDays.map((day, index) => (
                     <div key={day} className="flex flex-col items-center gap-1 border-2 border-foreground/0 last:font-extrabold pb-2 my-2 last:bg-foreground/5 last:border-2 last:border-foreground/5 last:rounded-md">
-                      <span className="text-xs text-center lowercase">
+                      <span className="text-xs text-center">
                         {day}
                       </span>
 
@@ -73,7 +74,7 @@ export default async function Home() {
       }
       <Link
         className={buttonVariants({ variant: "default" })} href={"/novo-habito"}>
-        <BsPlusCircleDotted size={18} className="mr-2" />Novo hábito
+        <BsPlusCircleDotted size={16} className="mr-2" />adicionar hábito
       </Link>
     </main >
   );

@@ -84,7 +84,7 @@ function Calendar({
       <div className="flex justify-around mx-2 my-4 items-center">
         <Link className="border-2 p-2 rounded-sm"
           href={``} onClick={goToPreviousMonth}>
-          <ArrowIcon
+          <ArrowIcon className="text-foreground"
             width={12}
             height={12}
           />
@@ -110,7 +110,7 @@ function Calendar({
         {daysInMonth.map((day, index) => (
           <div
             key={index}
-            className="flex flex-col items-center pt-2 pb-2"
+            className="flex flex-col items-center pt-2 pb-2 h-10 mb-2"
             onClick={() =>
               toggleHabit({
                 habit,

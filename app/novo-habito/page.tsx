@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { newHabit } from '@/components/newHabit';
 import { toast } from 'sonner';
 import ArrowIcon from '@/components/ArrowIcon';
+import { BsPlusCircleDotted } from 'react-icons/bs';
 
 
 export default function NewHabit() {
@@ -22,7 +23,7 @@ export default function NewHabit() {
     if (typeof result === 'string') {
       setErro(result);
     } else {
-      toast("Novo hábito criado com sucesso!", {
+      toast("Hábito criado com sucesso!", {
         description: `Hábito '${formData.get("habit")}' foi adicionado com sucesso.`,
         action: {
           label: "Ok",
@@ -38,7 +39,7 @@ export default function NewHabit() {
       <div>
         <Button variant="outline" size={"sm"}>
           <Link
-            className="flex items-center text-sm gap-1"
+            className="flex items-center gap-1 text-xs"
             href="/"
           >
             <ArrowIcon width={12} height={12} />
@@ -47,24 +48,38 @@ export default function NewHabit() {
         </Button>
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col mt-4 pt-12">
-        <Label htmlFor="habit" className="mb-1 font-thin text-lg">Seu Hábito:</Label>
+        <Label htmlFor="habit" className=" text-sm font-bold dark:font-normal">Hábito:</Label>
         <div className="flex flex-col">
           <Input
             type="text"
             name="habit"
             id="habit"
-            className='capitalize'
+            className='text-xs font-medium text-wrap placeholder:text-thin placeholder:text-gray-300 dark:placeholder:text-gray-600'
+            placeholder='ex.: estudar'
           />
           {erro && (
-            <Alert>
+            <Alert className='my-2'>
               <Terminal className="h-4 w-4" />
-              <AlertTitle>Houve um erro!</AlertTitle>
-              <AlertDescription>{erro}</AlertDescription>
+              <AlertTitle className='text-xs font-extrabold'>Houve um erro!</AlertTitle>
+              <AlertDescription className='text-xs'>{erro}</AlertDescription>
             </Alert>
           )}
           <div className="gap-4 items-center flex mt-2">
-            <Button variant={'default'} type="submit" className="w-full">Adicionar</Button>
-            <Button variant={'destructive'} type="reset" className="w-full">Cancelar</Button>
+            <Button
+              variant={'default'}
+              size={'sm'}
+              type="submit"
+              className="w-full">
+              <BsPlusCircleDotted size={14} className="mr-2" />
+              adicionar
+            </Button>
+            <Button
+              variant={'outline'}
+              size={'sm'}
+              type="reset"
+              className="w-full">
+              cancelar
+            </Button>
           </div>
         </div>
       </form>
